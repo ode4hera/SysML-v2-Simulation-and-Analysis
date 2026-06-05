@@ -8,7 +8,7 @@
 // Version: v2.0
 // License: MIT
 // Maintainer: DLR Institute of System Architectures in Aeronautics
-// Contact: jasper.bussemaker@dlr.de, francesco.torrigiani@dlr.de, luca.boggero@dlr.de
+// Contact: digital.engineering@dlr.de
 // Topics: MDAO, Multidisciplinary Design Analysis and Optimization
 //
 // MIT License
