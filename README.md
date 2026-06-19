@@ -29,6 +29,9 @@ The library is best viewed and used with [Syside Editor](https://docs.sensmetry.
 
 If you are using the library in your work, please cite:
 
+Gauthier, J.-M. et al., "Integrating MBSE and MDAO through SysML v2," 2026 International Workshop on Systems Engineering Research, Toulouse, France, 2026.
+doi: [10.1109/IEEECONF67861.2026.11440731](https://dx.doi.org/10.1109/IEEECONF67861.2026.11440731)
+
 Bussemaker, J.H., Torrigiani, F., & Cabaleiro, C. (2026). HERA Architecture Framework Libraries. ODE4HERA Consortium.
 doi: [10.5281/zenodo.18267042](https://doi.org/10.5281/zenodo.18267042)
 
