@@ -3,6 +3,7 @@
 lock_version = "0.5"
 
 [[project]]
+publisher = "ode4hera"
 name = "Architecture Design"
 version = "2.0.0"
 exports = [
@@ -100,13 +101,12 @@ usages = [
 ]
 
 [[project]]
+publisher = "ode4hera"
 name = "Requirements Management"
-version = "2.0.0"
+version = "2.0.1"
 exports = [
     "RequirementsManagement",
     "RequirementsManagement_AttributesExample",
-    "SYSMOD",
-    "SYSMOD_Process",
 ]
 identifiers = [
     "pkg:sysand/ode4hera/requirements-management",
@@ -116,12 +116,14 @@ usages = [
     "https://www.omg.org/spec/KerML/20250201/Function-Library.kpar",
     "https://www.omg.org/spec/KerML/20250201/Semantic-Library.kpar",
     "https://www.omg.org/spec/SysML/20250201/Systems-Library.kpar",
+    "pkg:sysand/mbse4u/sysmod",
 ]
 sources = [
-    { index_kpar = "https://sysand.com/index/ode4hera/requirements-management/2.0.0/project.kpar", kpar_size = 11017, kpar_digest = "7703ee330e3787cc73907e863ef9b3d508bac6f2a8e956b72cd85cf23d5af6f0" },
+    { index_kpar = "https://sysand.com/index/ode4hera/requirements-management/2.0.1/project.kpar", kpar_size = 8798, kpar_digest = "bf4fa99b780a02c6498afd6912b18f70bb4321e04a306ecf474570a8cfdc2d68" },
 ]
 
 [[project]]
+publisher = "ode4hera"
 name = "Simulation and Analysis"
 version = "2.0.2"
 exports = [
@@ -195,4 +197,18 @@ usages = [
     "https://www.omg.org/spec/KerML/20250201/Data-Type-Library.kpar",
     "https://www.omg.org/spec/KerML/20250201/Function-Library.kpar",
     "https://www.omg.org/spec/KerML/20250201/Semantic-Library.kpar",
+]
+
+[[project]]
+publisher = "mbse4u"
+name = "sysmod"
+version = "5.1.0"
+exports = [
+    "SYSMOD",
+]
+identifiers = [
+    "pkg:sysand/mbse4u/sysmod",
+]
+sources = [
+    { index_kpar = "https://sysand.com/index/mbse4u/sysmod/5.1.0/project.kpar", kpar_size = 17039, kpar_digest = "2245124597e8c182d6e0060c714e9c0c942f8cde8e1ec60e5341fd2dc7c60cf4" },
 ]
