@@ -54,7 +54,7 @@ library package MultidisciplinaryDesignAnalysisOptimization {
 
     private import ScalarValues::*;
     private import Collections::*;
-    private import SYSMOD::*;
+    private import RequirementsManagement::*;
     private import ModelBasedDesign::*;
     private import ArchitectureDesign::*;
     public import MDAOSemanticMetadata::*;

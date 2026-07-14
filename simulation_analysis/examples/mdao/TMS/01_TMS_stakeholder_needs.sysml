@@ -19,9 +19,9 @@ package TMS_Stakeholders {
 
     part <Stake01> airline: Stakeholder {
         doc /* Specific airline company */
-        attribute priority :>> risk = SYSMOD::PriorityKind::high;
+        attribute :>> risk = SYSMOD::LevelKind::high;
         contact :>> contact= "point.of.contact@airline.com";
-        :>> categories = StakeholderCategoryKind::User;
+        :>> categories = StakeholderCategoryKind::user;
     }
     part <Stake02> aircraft_oem: Stakeholder {
         doc /* Specific aircraft manufacturer */
