@@ -1,7 +1,7 @@
 {
   "name": "Simulation and Analysis",
   "description": "Library for modeling simulation and analysis concepts, in particular related to Model-Based Design (MBD) and Multidisciplinary Design Analysis and Optimization (MDAO).",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "MIT",
   "maintainer": [
     "German Aerospace Center (DLR) <digital.engineering@dlr.de>"
@@ -17,7 +17,7 @@
   "usage": [
     {
       "resource": "pkg:sysand/ode4hera/requirements-management",
-      "versionConstraint": "^2.0.0"
+      "versionConstraint": "^2.0.1"
     },
     {
       "resource": "pkg:sysand/ode4hera/architecture-design",
