@@ -1,12 +1,12 @@
 {
   "name": "Simulation and Analysis",
+  "publisher": "ode4hera",
   "description": "Library for modeling simulation and analysis concepts, in particular related to Model-Based Design (MBD) and Multidisciplinary Design Analysis and Optimization (MDAO).",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "MIT",
   "maintainer": [
     "German Aerospace Center (DLR) <digital.engineering@dlr.de>"
   ],
-  "publisher": "ode4hera",
   "website": "https://www.ode4hera.eu/",
   "topic": [
     "MBD",
@@ -15,10 +15,6 @@
     "Multidisciplinary Design Analysis and Optimization"
   ],
   "usage": [
-    {
-      "resource": "pkg:sysand/ode4hera/requirements-management",
-      "versionConstraint": "^2.0.0"
-    },
     {
       "resource": "pkg:sysand/ode4hera/architecture-design",
       "versionConstraint": "^2.0.0"
@@ -34,6 +30,10 @@
     },
     {
       "resource": "https://www.omg.org/spec/SysML/20250201/Systems-Library.kpar"
+    },
+    {
+      "resource": "pkg:sysand/ode4hera/requirements-management",
+      "versionConstraint": "^2.0.1"
     }
   ]
 }
