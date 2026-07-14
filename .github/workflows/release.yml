@@ -57,7 +57,7 @@ jobs:
         run: |
           cd ${PACKAGE_DIR}
           sysand build
-          sysand publish --index "${SYSAND_INDEX_URL}"
+          sysand publish --index "${SYSAND_INDEX_URL}" -v
       
       - name: Store kpars
         uses: actions/upload-artifact@v7
