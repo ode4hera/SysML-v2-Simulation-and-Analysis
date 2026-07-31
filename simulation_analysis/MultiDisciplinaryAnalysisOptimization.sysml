@@ -54,12 +54,13 @@ library package MultidisciplinaryDesignAnalysisOptimization {
 
     private import ScalarValues::*;
     private import Collections::*;
+    private import SYSMOD::*;
     private import RequirementsManagement::*;
     private import ModelBasedDesign::*;
     private import ArchitectureDesign::*;
     public import MDAOSemanticMetadata::*;
     private import TensorVectorMatrix::*;
-
+    private import MultifidelityAttributes::*;
 
     abstract part def MDAOComponent {
         ref requirement tracedRequirement[0..*];
@@ -74,15 +75,22 @@ library package MultidisciplinaryDesignAnalysisOptimization {
     }
 
     part def MDAOProcessArchitectureDefinition {
-        
+         doc /*When multiplicity for mdaoStrategy is higher than 1 we are in a case of a Multifidelity Process. 
+        The objective when applying such a process is to improve the accuracy of the optimal solution while 
+        controlling the overall computational cost of the method. A Multifidelity process architecture is then 
+        characterized by a chain of several MDAO Processes, each one conveying a fidelity level that increases 
+        when switching to the next one.*/
+
         ref part systemUnderAnalysis : Architecture;
 
         part stakeholderThatNeedsMDAO : Stakeholder;
         attribute stakeholderMDAOObjective : String;
+        attribute multifidelityModel[0..1] : MultiFidelityManagement ;
         
         abstract part mdaoGroup : MDAOGroup;
         part mdaoProblem[1] : MDAOProblemDefinition :> mdaoGroup;
-        part mdaoStrategy[1] : MDAOStrategyDefinition :> mdaoGroup;
+        part mdaoStrategy[1..*] : MDAOStrategyDefinition :> mdaoGroup;
+
         part mdaoSolution[1] : MDAOSolutionDefinition :> mdaoGroup;
     }
     
@@ -401,5 +409,67 @@ library package MultidisciplinaryDesignAnalysisOptimization {
                 :>> baseType = UMDAOConstraintDefinition meta SysML::AttributeUsage;
             }
         }
+    }
+
+     package MultifidelityAttributes {
+        doc
+        /*Attributes related to multifidelity are managed as a collection of mandatory and optional parameters
+        depending on the global multifidelity strategy defined at MDAOProcessArchitecture level and to configure 
+        the switching validator between the several mdaoStrategy items of increasing fidelity.*/
+        
+        attribute def Refinement {
+            doc
+            /*
+            Model management strategy of type filtering that optimizes each sub-process fidelity 
+            sequentially from the lowest to the highest fidelity level, each sub-process being 
+            warm-started with the best point of the previous sub-process optimization.
+
+            n_levels: number of sub-processes (each having a different fidelity)
+            x_start: initial design space point
+            input_level: The index (default=0) of the sub-process to start the execution
+            */
+            attribute n_levels[1] : Integer;
+            ref attribute x_start[0..*] : DesignVariablesVector ; //TO DO: do we type it with the DesignVariablesVector object ?
+            ref attribute input_level[0..1] : Integer;
+        }
+
+        attribute def AsyncRefinement :> Refinement {
+            doc 
+            /*Model management strategy that allow to continue the sequential process execution 
+            while verifying the validity of the solution for the on-going sub-process optimization.
+            */
+            ref attribute validators[0..*] : SwitchingValidatorModel; //max multiplicity is n_levels-1
+            ref attribute validators_options ;
+
+        }
+
+        attribute def MixedRefinement :> AsyncRefinement  {
+            doc 
+            /*
+            Mixed refinement is a specialization of the asynchronous refinement strategy that allow 
+            to select which sub-processes are to be considered as asynchronous, hence pursuing the global
+            process execution while verifying in parallel the validity of only sub-optimizations tagged
+            asynchronous
+
+            async_levels: indices of sub-processes that shall be considered asynchronous  
+            */
+            ref attribute async_levels : Integer[0..*];
+        }
+
+
+        enum def MultiFidelityManagement{
+            Refinement;
+            AsyncRefinement;
+            MixedRefinement;
+        }
+
+        enum def SwitchingValidatorModel{
+            DecreaseValidator;
+            AlignmentValidator;
+            GREValidator ;
+            QuadReadinessValidator;
+            QuadInitValidator;   
+        }
+
     }
 }
