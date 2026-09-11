@@ -128,6 +128,7 @@ name = "Simulation and Analysis"
 version = "2.0.2"
 exports = [
     "ArchitectureFileExample",
+    "FMIv2.0.5",
     "FlightControlSystemExample",
     "MDAOFileExample",
     "MDAORepository",
