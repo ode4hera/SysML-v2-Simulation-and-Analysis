@@ -127,8 +127,9 @@ library package ModelBasedDesign {
     }
     
     private import VectorValues::NumericalVectorValue;
-    private import ControlFunctions::maximize;
-    private import ControlFunctions::minimize;
+    private import ControlFunctions::reduce;
+    private import DataFunctions::max;
+    private import DataFunctions::min;
     private import SequenceFunctions::last;
 
     attribute def ExtractedValue {
@@ -138,11 +139,11 @@ library package ModelBasedDesign {
     }
     attribute def maxValue :> ExtractedValue {
         doc /*Max value extracted from result series*/
-        :>> value = maximize(resultSeries);
+        :>> value = resultSeries->reduce max;
     }
     attribute def minValue :> ExtractedValue {
         doc /*Max value extracted from result series*/
-        :>> value = minimize(resultSeries);
+        :>> value = resultSeries->reduce min;
     }
     attribute def SteadyState :> ExtractedValue {
         doc /*Max value extracted from result series*/
